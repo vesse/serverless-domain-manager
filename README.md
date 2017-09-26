@@ -54,6 +54,9 @@ custom:
 ```
 For example:
 ```yaml
+plugins:
+  - serverless-domain-manager
+  
 custom:
   customDomain:
     basePath: "dev"
