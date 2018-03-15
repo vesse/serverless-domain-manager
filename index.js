@@ -380,8 +380,6 @@ class ServerlessCustomDomain {
    *  @param certificateArn   The certificate needed to create the new domain
    */
   createDomainName(givenCertificateArn) {
-    console.log('Creating domain name', util.inspect(givenCertificateArn, { depth: null }));
-
     const createDomainNameParams = {
       domainName: this.givenDomainName,
       endpointConfiguration: {
@@ -394,6 +392,8 @@ class ServerlessCustomDomain {
     } else if (this.endpointType === endpointTypes.regional) {
       createDomainNameParams.regionalCertificateArn = givenCertificateArn;
     }
+
+    console.log('Creating domain name', util.inspect(createDomainNameParams, { depth: null }));
 
     /* This will return the distributionDomainName (used in changeResourceRecordSet)
       if the domain name already exists, the distribution domain name will be returned */
