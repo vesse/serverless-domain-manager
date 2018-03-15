@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 const DomainResponse = require('./DomainResponse');
-
+const util = require('util');
 
 const endpointTypes = {
   edge: 'EDGE',
@@ -380,6 +380,8 @@ class ServerlessCustomDomain {
    *  @param certificateArn   The certificate needed to create the new domain
    */
   createDomainName(givenCertificateArn) {
+    console.log('Creating domain name', util.inspect(givenCertificateArn, { depth: null }));
+
     const createDomainNameParams = {
       domainName: this.givenDomainName,
       endpointConfiguration: {
